@@ -92,13 +92,6 @@ select:focus{outline:none;border-color:var(--navy)}
 .howstep b{color:var(--navy)}
 .howstep .hn{width:28px;height:28px;flex:none;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;font-family:'Fraunces',serif}
 
-/* EV band */
-.evband{display:flex;gap:16px;align-items:flex-start;background:var(--accent-soft);border:1px solid #f0e2c2;border-radius:14px;padding:22px 24px}
-.evband .evi{font-size:26px;line-height:1}
-.evband .evt{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--navy)}
-.evband .evd{font-size:14px;color:var(--ink2);margin-top:6px;line-height:1.6}
-.evband b{color:var(--navy)}
-
 /* FAQ */
 .faq{display:flex;flex-direction:column;gap:12px}
 .qa{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px;box-shadow:var(--shadow)}
@@ -173,7 +166,6 @@ footer b{color:var(--ink2)}
           <option value="db">Distribution board (DB) upgrade</option>
           <option value="rewire">Full HDB rewiring</option>
           <option value="fault">Fault-finding / tripping diagnosis</option>
-          <option value="ev">EV charger installation</option>
           <option value="circuit">Wire a new circuit</option>
         </select>
         <div class="result" id="costres">
@@ -194,7 +186,7 @@ footer b{color:var(--ink2)}
           <option value="need">Install or move lighting / a ceiling fan</option>
           <option value="need">Change or upgrade the DB / fuse box</option>
           <option value="need">Rewire a room or the whole flat</option>
-          <option value="need">Install an EV charger or water heater</option>
+          <option value="need">Install a water heater or aircon point</option>
           <option value="ok">Plug in or unplug an appliance</option>
           <option value="ok">Change a light bulb</option>
           <option value="ok">Reset a tripped switch in the DB</option>
@@ -223,7 +215,6 @@ footer b{color:var(--ink2)}
       <div class="prow"><span>Full HDB rewiring — 3-room</span><span class="amt">$1,800 – $3,500</span></div>
       <div class="prow"><span>Full HDB rewiring — 4-room</span><span class="amt">$2,500 – $4,500</span></div>
       <div class="prow"><span>Full HDB rewiring — 5-room</span><span class="amt">$3,000 – $6,000</span></div>
-      <div class="prow"><span>EV charger installation (home)</span><span class="amt">$2,000 – $5,000+</span></div>
     </div>
     <p class="pnote">Indicative 2026 ranges for guidance only. Your actual price depends on the property (older flats with concealed conduit and landed homes sit higher), brand of fittings, and number of points. Always get a written quote.</p>
   </section>
@@ -238,16 +229,6 @@ footer b{color:var(--ink2)}
   </section>
 
   <section class="sec">
-    <div class="evband">
-      <div class="evi">🔌</div>
-      <div>
-        <div class="evt">Installing an EV charger at a condo? There's a grant.</div>
-        <div class="evd">The <b>EV Common Charger Grant (ECCG)</b> co-funds up to <b>50%</b> of installation (capped around <b>$4,000</b> per charger) for condos &amp; private apartments — running until end-2026 or the first 3,500 chargers, whichever comes first. <b>Landed homes don't qualify</b>, and HDB residents use shared public chargers (no private chargers in public lots).</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
     <div class="sec-h">Browse by topic</div>
     <div class="cats">
       <div class="cat"><div class="k"></div><div class="t">Costs &amp; Pricing</div><div class="d">What electrical work really costs in Singapore.</div>
@@ -258,8 +239,6 @@ footer b{color:var(--ink2)}
         <div class="arts"><a>Why your power keeps tripping</a><a>Lights flickering — causes</a><a>No power in one room</a></div></div>
       <div class="cat"><div class="k"></div><div class="t">HDB &amp; Condo</div><div class="d">Rules for flats and renovations.</div>
         <div class="arts"><a>Adding power points in an HDB</a><a>Renovation electrical checklist</a></div></div>
-      <div class="cat"><div class="k"></div><div class="t">EV Chargers</div><div class="d">Home charging in Singapore.</div>
-        <div class="arts"><a>EV charger for landed &amp; condo</a><a>Approvals, cabling &amp; costs</a></div></div>
       <div class="cat"><div class="k"></div><div class="t">Solar &amp; Smart Home</div><div class="d">Newer installations explained.</div>
         <div class="arts"><a>Home solar basics in SG</a><a>Smart switches &amp; wiring</a></div></div>
     </div>
@@ -304,7 +283,6 @@ const COSTS = {
   db:      ['$350 – $1,200+', 'for a DB upgrade with new MCBs + RCCB; landed or large homes run higher.'],
   rewire:  ['$1,800 – $6,000+', 'for a full HDB flat — roughly $1,800–3,500 (3-rm), $2,500–4,500 (4-rm), $3,000–6,000 (5-rm).'],
   fault:   ['$60 – $150', 'a typical call-out to diagnose tripping or a dead circuit — often waived if you proceed with the repair.'],
-  ev:      ['$2,000 – $5,000+', 'for a home charger; condos may claim up to 50% (cap ~$4,000) via the ECCG grant — see below.'],
   circuit: ['$150 – $400', 'per new dedicated circuit run from the DB.'],
 };
 function estimate(){
@@ -317,7 +295,7 @@ function checkLEW(){
   const v=document.getElementById('task').value, r=document.getElementById('lewres');
   if(!v){ r.innerHTML='<div class="verdict idle"><div class="ic">?</div><div><div class="vt">Choose a task above</div><div class="vd">We\'ll tell you whether it legally needs a licensed electrician.</div></div></div>'; return; }
   if(v==='need'){
-    r.innerHTML='<div class="verdict need"><div class="ic">!</div><div><div class="vt">Yes — you need a Licensed Electrical Worker.</div><div class="vd">In Singapore, permanent wiring work — power points, switches, lighting, the DB, rewiring, EV chargers — must legally be done by an EMA-licensed worker. DIY here is illegal and unsafe.</div></div></div>';
+    r.innerHTML='<div class="verdict need"><div class="ic">!</div><div><div class="vt">Yes — you need a Licensed Electrical Worker.</div><div class="vd">In Singapore, permanent wiring work — power points, switches, lighting, the DB, rewiring, water heaters — must legally be done by an EMA-licensed worker. DIY here is illegal and unsafe.</div></div></div>';
   } else {
     r.innerHTML='<div class="verdict ok"><div class="ic">✓</div><div><div class="vt">No — that\'s fine to do yourself.</div><div class="vd">Everyday tasks like plugging in appliances, changing a bulb, or resetting a tripped switch don\'t need a licensed worker. If a switch keeps tripping, though, have it checked.</div></div></div>';
   }
