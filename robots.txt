@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adamdegoat.github.io/sg-electrical-guide/sitemap.xml
