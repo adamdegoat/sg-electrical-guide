@@ -76,6 +76,7 @@ select:focus{outline:none;border-color:var(--navy)}
 .cat .arts{margin-top:13px;display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--line2);padding-top:13px}
 .cat .arts a{font-size:13px;color:var(--ink2);font-weight:500}
 .cat .arts a:hover{color:var(--navy)}
+.cat .arts .soon{font-size:13px;color:var(--faint);font-style:italic}
 
 /* price table */
 .ptable{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
@@ -137,10 +138,9 @@ footer b{color:var(--ink2)}
   .sec-h{margin-bottom:14px}
   .tools{grid-template-columns:1fr;gap:13px}
   .tool{padding:20px}
-  .cats{grid-template-columns:1fr 1fr;gap:11px}
-  .cat{padding:15px 15px 16px}
-  .cat .arts{display:none}
-  .cat .d{font-size:12px;margin-top:4px}
+  .cats{grid-template-columns:1fr;gap:11px}
+  .cat{padding:16px 18px}
+  .cat .d{font-size:12.5px;margin-top:4px}
   .hero{padding:32px 0 20px}
   .hero h1{font-size:30px}
   .hero p{font-size:15.5px;margin-top:16px}
@@ -287,15 +287,15 @@ footer b{color:var(--ink2)}
     <div class="sec-h">Browse by topic</div>
     <div class="cats">
       <div class="cat"><div class="k"></div><div class="t">Costs &amp; Pricing</div><div class="d">What electrical work really costs in Singapore.</div>
-        <div class="arts"><a>Cost to rewire an HDB flat</a><a>Price to add power points</a><a>What a DB upgrade costs</a></div></div>
+        <div class="arts"><a href="hdb-rewiring-cost.html">Cost to rewire an HDB flat</a><a href="adding-power-points-hdb.html">Price to add power points</a><a href="db-box-upgrade-cost.html">What a DB upgrade costs</a></div></div>
       <div class="cat"><div class="k"></div><div class="t">Safety &amp; Regulations</div><div class="d">EMA rules and what's legal to DIY.</div>
-        <div class="arts"><a>What is a Licensed Electrical Worker?</a><a>What you can't legally DIY</a><a>How to verify a licence (ELISE)</a></div></div>
+        <div class="arts"><a href="do-i-need-licensed-electrician.html">Do I need a licensed electrician?</a><a href="do-i-need-licensed-electrician.html">How to verify a licence (ELISE)</a></div></div>
       <div class="cat"><div class="k"></div><div class="t">Common Problems</div><div class="d">Fix-it-or-call-a-pro explainers.</div>
-        <div class="arts"><a>Why your power keeps tripping</a><a>Lights flickering — causes</a><a>No power in one room</a></div></div>
+        <div class="arts"><a href="power-keeps-tripping.html">Why your power keeps tripping</a><a href="lights-flickering.html">Lights flickering — causes</a></div></div>
       <div class="cat"><div class="k"></div><div class="t">HDB &amp; Condo</div><div class="d">Rules for flats and renovations.</div>
-        <div class="arts"><a>Adding power points in an HDB</a><a>Renovation electrical checklist</a></div></div>
+        <div class="arts"><a href="adding-power-points-hdb.html">Adding power points in an HDB</a><a href="hdb-rewiring-cost.html">HDB rewiring cost guide</a></div></div>
       <div class="cat"><div class="k"></div><div class="t">Solar &amp; Smart Home</div><div class="d">Newer installations explained.</div>
-        <div class="arts"><a>Home solar basics in SG</a><a>Smart switches &amp; wiring</a></div></div>
+        <div class="arts"><span class="soon">More guides coming soon</span></div></div>
     </div>
   </section>
 
